@@ -4,7 +4,7 @@ import Achievments from "../components/achievmentcard";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 import { hover, motion } from "framer-motion";
 
 export default function Dashboard() {
@@ -41,7 +41,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="text-white min-h-screen bg-black p-10 py-6 space-y-6">
+    <div className="text-white min-h-screen bg-black p-10 py-6 space-y-6 w-1/1">
       {/* Header */}
       <div
         className="text-center items-center rounded-md p-4 shadow-lg"
@@ -62,7 +62,7 @@ export default function Dashboard() {
         {/* Intro Section */}
         {!Loading ? (
           <>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-4 items-center">
+            <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 items-center">
               {/* Profile Image */}
               <div className="flex justify-center md:justify-start">
                 <img
@@ -79,14 +79,14 @@ export default function Dashboard() {
 
               {/* Referral Code */}
               <div className="flex items-center border border-white rounded-md overflow-hidden w-max mx-auto md:ml-auto">
-                <p className="px-3 py-2 border-r border-white text-sm md:text-base">
+                <p className="px-3 py-2 border-r border-white text-sm sm:text-base">
                   REFERRAL CODE
                 </p>
-                <code className="px-3 py-2 bg-gray-700 border-r border-white text-sm md:text-base">
+                <code className="px-3 py-2 bg-gray-700 border-r border-white text-sm sm:text-base">
                   {refcode}
                 </code>
                 <button
-                  className="px-3 py-2 hover:bg-red-900 text-sm md:text-base hover:cursor-pointer"
+                  className="px-3 py-2 hover:bg-red-900 text-sm sm:text-base hover:cursor-pointer"
                   onClick={async () => {
                     await navigator.clipboard.writeText(refcode);
                     toast.success("copied refferal code to clipboard");
