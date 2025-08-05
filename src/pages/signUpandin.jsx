@@ -20,7 +20,12 @@ export default function Signway() {
     setphone("");
   }, []);
 
-  const handlesignup = () => {
+  const handlesignup = (e) => {
+    e.preventDefault();
+    if (!email || !name || !password || !phone) {
+    toast.error("Please fill in all required fields.");
+    return;
+  }
     setisloading(true);
     axios
       .post("https://shecanfoundation-backend-p394.onrender.com/signup", {
@@ -41,7 +46,12 @@ export default function Signway() {
       });
   };
 
-  const handlesignin = () => {
+  const handlesignin = (e) => {
+    e.preventDefault();
+    if (!email || !password ) {
+    toast.error("Please fill in all required fields.");
+    return;
+  }
     setisloading(true);
     axios
       .put("https://shecanfoundation-backend-p394.onrender.com/signin", {
@@ -65,7 +75,7 @@ export default function Signway() {
       <div className="flex justify-center items-center">
         <div className="bg-black text-white font-semibold p-4 mt-4 rounded-2xl">
           {isUser ? (
-            <>
+            <form>
               <div className="p-1 text-2xl text-center flex justify-center">
                 SignIn
               </div>
@@ -135,9 +145,9 @@ export default function Signway() {
                   SignUp
                 </span>
               </div>
-            </>
+            </form>
           ) : (
-            <>
+            <form>
               <div className="p-1 text-2xl text-center flex justify-center">
                 SignUp
               </div>
@@ -151,6 +161,7 @@ export default function Signway() {
                 className="w-full border-1 text-left px-2 py-2 border-white rounded-md"
                 type="text"
                 placeholder="user@email.com"
+                required
                 onChange={(e) => {
                   setemail(e.target.value);
                 }}
@@ -162,6 +173,7 @@ export default function Signway() {
                 className="w-full border-1 text-left px-2 py-2 border-white rounded-md"
                 type="text"
                 placeholder="Your Name"
+                required
                 onChange={(e) => {
                   setname(e.target.value);
                 }}
@@ -180,6 +192,7 @@ export default function Signway() {
                   className="w-full border-1 text-left px-2 py-2 border-white rounded-r-md"
                   type="text"
                   placeholder="9876543210"
+                  required
                   onChange={(e) => {
                     setphone(e.target.value);
                     console.log(e.target.value);
@@ -192,6 +205,7 @@ export default function Signway() {
               <input
                 className="w-full border-1 text-left px-2 py-2 border-white rounded-md"
                 type="password"
+                required
                 onChange={(e) => {
                   setpassword(e.target.value);
                 }}
@@ -236,7 +250,7 @@ export default function Signway() {
                   SignIn
                 </span>
               </div>
-            </>
+            </form>
           )}
         </div>
       </div>
