@@ -41,16 +41,17 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="text-white min-h-screen bg-black px-6 py-6 space-y-6">
+    <div className="text-white min-h-screen bg-black p-10 py-6 space-y-6">
       {/* Header */}
       <div
-        className="flex justify-between items-center rounded-md p-4 shadow-lg"
+        className="text-center items-center rounded-md p-4 shadow-lg"
         style={{
           background:
             "linear-gradient(47deg, rgba(63,144,251,1) 0%, rgba(252,70,107,1) 100%)",
         }}
       >
         <h1 className="text-3xl font-bold">Intern Dashboard</h1>
+        <p className="text-sm pt-4">Intern dashboard to track tasks, funds raised, referral code, and progress in one place.</p>
       </div>
       <motion.div
         className="space-y-6"
@@ -118,7 +119,7 @@ export default function Dashboard() {
             {/* Donation Stats */}
             <div className="border border-white rounded-lg p-4 hover:bg-[linear-gradient(47deg,_rgba(30,70,130,1)_0%,_rgba(130,30,50,1)_100%)] transition"
             >
-              <p className="text-2xl font-semibold mb-2 flex">
+              <p className="text-2xl font-semibold mb-2 flex items-center">
                 You have Raised Amount:
                 <span className="ml-2 px-2 py-1 bg-lime-700 rounded-md text-white hover:bg-black transition cursor-pointer flex w-max items-center gap-1">
                   Rs. {raisedamount}
