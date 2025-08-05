@@ -2,9 +2,33 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 export default function Navbar() {
   const [isLoggedin, setloggedin] = useState(true);
+  const [change, setchange] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef();
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     try {
@@ -12,49 +36,109 @@ export default function Navbar() {
       const split = token.startsWith("Bearer");
       if (!split) setloggedin(false);
     } catch (err) {
-      setloggedin(false);
+      setloggedin((c) => !c);
     }
-  }, []);
+  }, [change]);
 
   const navigate = useNavigate();
 
   const handlelogout = () => {
+    setchange((c) => !c);
     const confirmed = window.confirm("Are you sure you want to log out?");
-    setloggedin(false);
     if (confirmed) {
       localStorage.removeItem("token");
       navigate("/signway"); // or wherever your login page is
     }
   };
+  const handlelogin = () => {
+    setchange((c) => !c);
+    navigate("/signway"); // or wherever your login page is
+  };
   const handleleadboard = async () => {
+    setchange((c) => !c);
     navigate("/leaderboard");
   };
   const handledashboard = async () => {
+    setchange((c) => !c);
     navigate("/dashboard");
   };
   return (
-    <>
-      <div className="w-1/1 px-8 py-4 bg-black text-white font-semibold flex justify-between border-b-1 border-b-white">
-        <div className="text-2xl">SheCanFoundation</div>
-        <div className=" font-semibold flex justify-start">
-          <div className="px-4 pt-1 hover:cursor-pointer">About</div>
-          <div className="px-4 pt-1 hover:cursor-pointer">Our Story</div>
+    <div className="px-8 py-4 bg-black text-white font-semibold grid grid-cols-2  border-b-1 border-b-white items-center">
+      <div className="text-2xl">SheCanFoundation</div>
+      {isMobile ? (
+        <button
+          onClick={() => setOpen(!open)}
+          className="text-white flex justify-end"
+        >
+          {/* Hamburger SVG */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          {open && (
+            <div className="absolute right-5 top-10 mt-2 w-40 bg-white text-black rounded shadow-lg z-50">
+              <div
+                onClick={handledashboard}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                Dashboard
+              </div>
+              <div
+                onClick={handleleadboard}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                Leaderboard
+              </div>
+              {!isLoggedin ? (
+                <div
+                  onClick={() => navigate("/signway")}
+                  className="px-4 py-2 text-red-500 hover:bg-gray-100 cursor-pointer"
+                >
+                  Login
+                </div>
+              ) : (
+                <div
+                  onClick={handlelogout}
+                  className="px-4 py-2 text-red-500 hover:bg-gray-100 cursor-pointer"
+                >
+                  Logout
+                </div>
+              )}
+            </div>
+          )}
+        </button>
+      ) : (
+        <div className="flex gap-6 justify-end justify-items-end font-semibold ">
+          <div className=" text-center hover:cursor-pointer">About</div>
+          <div className=" text-center hover:cursor-pointer w-max">
+            Our Story
+          </div>
           <div
             onClick={handledashboard}
-            className="px-4 pt-1 hover:cursor-pointer"
+            className=" hover:cursor-pointer text-center"
           >
             Dashboard
           </div>
           <div
             onClick={handleleadboard}
-            className="px-4 pt-1 hover:cursor-pointer"
+            className=" hover:cursor-pointer text-center"
           >
             Leaderboard
           </div>
           {!isLoggedin ? (
             <div
-              onClick={handlelogout}
-              className="px-4 pt-1 hover:cursor-pointer"
+              onClick={handlelogin}
+              className=" hover:cursor-pointer text-center"
             >
               <svg
                 class="w-6 h-6 text-gray-800 dark:text-white"
@@ -77,7 +161,7 @@ export default function Navbar() {
           ) : (
             <div
               onClick={handlelogout}
-              className="px-4 pt-1 hover:cursor-pointer"
+              className="hover:cursor-pointer text-center"
             >
               <svg
                 class="w-6 h-6 text-gray-800 dark:text-white"
@@ -97,7 +181,7 @@ export default function Navbar() {
             </div>
           )}
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 }
