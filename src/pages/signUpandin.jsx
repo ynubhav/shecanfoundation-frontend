@@ -36,6 +36,7 @@ export default function Signway() {
       })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        toast.success('welcome to Dashboard')
         navigate("/dashboard");
       })
       .catch((err) => {
@@ -60,6 +61,7 @@ export default function Signway() {
       })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        toast.success('welcome to Dashboard')
         navigate("/dashboard");
       })
       .catch((err) => {
