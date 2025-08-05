@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 
 export default function Signway() {
   const [isUser, setisUser] = useState(true);
@@ -18,7 +18,7 @@ export default function Signway() {
     setname("");
     setpassword("");
     setphone("");
-  }, []);
+  }, [isUser]);
 
   const handlesignup = (e) => {
     e.preventDefault();
@@ -71,12 +71,12 @@ export default function Signway() {
   };
 
   return (
-    <div className="h-screen min-w-[1200px]">
+    <div className="min-h-screen">
       <div className="flex justify-center items-center">
-        <div className="bg-black text-white font-semibold p-4 mt-4 rounded-2xl">
+        <div className="bg-black text-white font-semibold p-4 mt-4 mb-10 mx-2  rounded-2xl">
           {isUser ? (
             <form>
-              <div className="p-1 text-2xl text-center flex justify-center">
+              <div className="p-1 text-2xl text-center flex justify-center m-2">
                 SignIn
               </div>
               <div className="p-4 text-xl text-center flex justify-center text-gray-300">
