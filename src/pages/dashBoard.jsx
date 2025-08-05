@@ -121,7 +121,7 @@ export default function Dashboard() {
             >
               <p className="text-2xl font-semibold mb-2 flex items-center">
                 You have Raised Amount:
-                <span className="ml-2 px-2 py-1 bg-lime-700 rounded-md text-white hover:bg-black transition cursor-pointer flex w-max items-center gap-1">
+                <span className="ml-2 px-2 py-1 bg-blue-700 rounded-md text-white hover:bg-black transition cursor-pointer flex w-max items-center gap-1">
                   Rs. {raisedamount}
                   <svg
                     class="w-6 h-6 text-gray-800 dark:text-white"
