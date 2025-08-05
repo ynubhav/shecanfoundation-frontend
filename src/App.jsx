@@ -3,7 +3,7 @@ import Footer from "./components/footer";
 import Navbar from "./components/navBar";
 import Dashboard from "./pages/dashBoard";
 import Signway from "./pages/signUpandin";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from 'sonner';
 import Leaderboard from "./pages/leaderBoard";
 import { motion } from "framer-motion";
 
@@ -11,9 +11,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="w-1/1">
+        <div className="">
           <Navbar />
-          <div className="bg-gray-900 ">
+          <div className="bg-gray-900 min-h-screen">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ function App() {
           </div>
         </div>
       </BrowserRouter>
-      <ToastContainer position="bottom-right" />
+      <Toaster position="bottom-right" richColors theme="dark"/>
     </>
   );
 }
