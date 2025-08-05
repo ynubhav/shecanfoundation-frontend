@@ -26,8 +26,8 @@ export default function Leaderboard() {
   }, []);
 
   return (
-    <>
-      <div className="w-full h-screen bg-black text-white flex flex-col items-center px-4 py-6 space-y-6">
+    <div className="mx-1 mb-2">
+      <div className=" bg-black text-white flex flex-col items-center px-4 py-6 space-y-6">
         {/* Header */}
         <div
           className="w-full text-4xl font-bold text-center py-4 rounded-md shadow-md"
@@ -92,6 +92,6 @@ export default function Leaderboard() {
           </motion.div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
