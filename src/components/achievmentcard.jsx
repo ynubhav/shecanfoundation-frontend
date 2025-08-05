@@ -5,7 +5,7 @@ export default function Achievments({ title, description, unlocked }) {
       <div className="text-sm text-zinc-300">{description}</div>
 
       {unlocked ? (
-        <button className="w-full rounded-md font-semibold bg-green-700 hover:cursor-pointer hover:bg-green-800 transition py-2 text-sm">
+        <button className="w-full rounded-md font-semibold bg-blue-700 hover:cursor-pointer hover:bg-blue-800 transition py-2 text-sm">
           Claim Certificate
         </button>
       ) : (
