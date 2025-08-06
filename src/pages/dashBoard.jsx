@@ -51,7 +51,10 @@ export default function Dashboard() {
         }}
       >
         <h1 className="text-3xl font-bold">Intern Dashboard</h1>
-        <p className="text-sm pt-4">Intern dashboard to track tasks, funds raised, referral code, and progress in one place.</p>
+        <p className="text-sm pt-4">
+          Intern dashboard to track tasks, funds raised, referral code, and
+          progress in one place.
+        </p>
       </div>
       <motion.div
         className="space-y-6"
@@ -117,8 +120,7 @@ export default function Dashboard() {
             </div>
 
             {/* Donation Stats */}
-            <div className="border border-white rounded-lg p-4 hover:bg-[linear-gradient(47deg,_rgba(30,70,130,1)_0%,_rgba(130,30,50,1)_100%)] transition"
-            >
+            <div className="border border-white rounded-lg p-4 hover:bg-[linear-gradient(47deg,_rgba(30,70,130,1)_0%,_rgba(130,30,50,1)_100%)] transition">
               <p className="text-2xl font-semibold mb-2 flex items-center">
                 You have Raised Amount:
                 <span className="ml-2 px-2 py-1 bg-blue-700 rounded-md text-white hover:bg-black transition cursor-pointer flex w-max items-center gap-1">

@@ -23,9 +23,9 @@ export default function Signway() {
   const handlesignup = (e) => {
     e.preventDefault();
     if (!email || !name || !password || !phone) {
-    toast.error("Please fill in all required fields.");
-    return;
-  }
+      toast.error("Please fill in all required fields.");
+      return;
+    }
     setisloading(true);
     axios
       .post("https://shecanfoundation-backend-p394.onrender.com/signup", {
@@ -36,7 +36,7 @@ export default function Signway() {
       })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        toast.success('welcome to Dashboard')
+        toast.success("welcome to Dashboard");
         navigate("/dashboard");
       })
       .catch((err) => {
@@ -49,10 +49,10 @@ export default function Signway() {
 
   const handlesignin = (e) => {
     e.preventDefault();
-    if (!email || !password ) {
-    toast.error("Please fill in all required fields.");
-    return;
-  }
+    if (!email || !password) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
     setisloading(true);
     axios
       .put("https://shecanfoundation-backend-p394.onrender.com/signin", {
@@ -61,7 +61,7 @@ export default function Signway() {
       })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        toast.success('welcome to Dashboard')
+        toast.success("welcome to Dashboard");
         navigate("/dashboard");
       })
       .catch((err) => {
