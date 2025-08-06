@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <div className="">
           <Navbar />
-          <div className="bg-gray-900 min-h-screen">
+          <div className="bg-gray-900 min-h-screen mt-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

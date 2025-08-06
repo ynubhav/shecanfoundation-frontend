@@ -63,7 +63,7 @@ export default function Navbar() {
     navigate("/dashboard");
   };
   return (
-    <div className="px-8 py-4 bg-black text-white font-semibold grid grid-cols-2  border-b-1 border-b-white items-center">
+    <div className="fixed top-0 right-0 left-0 px-8 py-4 bg-black text-white font-semibold grid grid-cols-2  border-b-1 border-b-white items-center">
       <div className="text-2xl">SheCanFoundation</div>
       {isMobile ? (
         <button
