@@ -14,10 +14,8 @@ A modern, responsive React front-end built with Vite for **SheCanFoundation**, p
 5. [File Structure](#file-structure)  
 6. [Installation & Setup](#installation--setup)  
 7. [Usage & Development](#usage--development)  
-8. [Configuration](#configuration)  
-9. [Common Issues & Troubleshooting](#common-issues--troubleshooting)  
-10. [Contributing](#contributing)  
-11. [License](#license)
+8. [Contributing](#contributing)  
+9. [License](#license)
 
 ---
 
@@ -54,7 +52,7 @@ https://shecanfoundation-frontend.vercel.app/leaderboard
 
 ---
 
-## File Structure ⚙️
+## File Structure
 
 frontend/  
 ├── public/  
@@ -119,3 +117,4 @@ Made By:
 ```
 ynubhav
 ```
+#### LINK: github.com/ynubhav
