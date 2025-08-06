@@ -6,14 +6,16 @@ import Signway from "./pages/signUpandin";
 import { Toaster } from 'sonner';
 import Leaderboard from "./pages/leaderBoard";
 import { motion } from "framer-motion";
+import './App.css'
+import './index.css'
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="">
+        <div className=" scrollbar-hide">
           <Navbar />
-          <div className="bg-gray-900 min-h-screen mt-16">
+          <div className="bg-gray-900 min-h-screen mt-16  scrollbar-hide">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
